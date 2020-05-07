@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body{
+    background-image: url('https://image.freepik.com/free-photo/crop-clapperboard-black-background_23-2147698844.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+</style>
+</head>
+<body>
+<p id="notice"><%= notice %></p>
+
+<h1 align ="center" style = "color: white">MOVIES</h1>
+
+<table align ="center" border="0" id = "myTable">
+  <thead>
+    <tr>
+      <th style = "color:white" >NAME</th>
+      <th style = "color:white" >GENRE</th>
+      <th style = "color:white" >RATING</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+<%= form_tag(search_movies_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+  </div>  
+<% end %>
+<div class="row">
+  <div>
+    <%= form_tag filter_movies_path, method: :get do %>
+    <%= search_field_tag :below, params[:below], placeholder: "Below", class: "form-control" %>  
+    <%= search_field_tag :above, params[:above], placeholder: "Above", class: "form-control" %>  
+    <%= submit_tag 'Filter', class: 'btn search-button' %>
+    <% end %>
+  </div>
+</div>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.genre %></td>
+        <td><%= movie.rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</body>
+</html>
+
+<br>
+<%= link_to 'New Movie', new_movie_path %>

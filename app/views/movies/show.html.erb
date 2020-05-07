@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align ="center" style = "color: white">MOVIES</h1>
+
+<table align ="center" border="0" id = "myTable">
+  <thead>
+    <tr>
+      <th style = "color:white" >NAME</th>
+      <th style = "color:white" >GENRE</th>
+      <th style = "color:white" >RATING</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.genre %></td>
+        <td><%= movie.rating %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</body>
+</html>
+
+<br>
+<%= link_to 'New Movie', new_movie_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie.name %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @movie.genre %>
+</p>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+ -->

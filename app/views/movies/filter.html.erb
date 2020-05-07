@@ -1,0 +1,21 @@
+<h1 align ="center" style = "color: white">Search Results</h1>
+
+<table align ="center" border="0" id = "myTable">
+  <thead>
+    <tr>
+      <th style = "color:white" >NAME</th>
+      <th style = "color:white" >GENRE</th>
+      <th style = "color:white" >RATING</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @res.each do |res| %>  
+        <tr>
+        <td><%= res.name %></td>
+        <td><%= res.genre %></td>
+        <td><%= res.rating %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
