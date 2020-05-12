@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
    # @movies = @movies.sort_by {|movie| movie.rating}
-        @movies = @movies.all.order("rating")  
+  #       @movies = @movies.all.order("rating")  
   end
 
   # GET /movies/1
@@ -27,6 +27,11 @@ end
    @res = Movie.all.where("rating BETWEEN ? AND ? ",params[:below], params[:above])
    # render json: @res
   end
+  def showcast
+    @show = Cast.joins(:movie_cast_mappings)
+   # render json: @show
+  end
+
 
 
   # GET /movies/new
@@ -86,6 +91,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:name, :genre)
+      params.require(:movie).permit(:name, :genre, :rating)
     end
 end

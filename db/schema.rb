@@ -10,14 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_074158) do
+ActiveRecord::Schema.define(version: 2020_05_12_063035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "lists", force: :cascade do |t|
+  create_table "casts", force: :cascade do |t|
     t.string "name"
-    t.string "genre"
+    t.string "gender"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movie_cast_mappings", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "cast_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,16 +33,11 @@ ActiveRecord::Schema.define(version: 2020_04_20_074158) do
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.string "genre"
-    t.datetime "created_at", precision: 6
-    t.datetime "updated_at", precision: 6
-    t.integer "rating"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "movie_cast_mappings", "casts"
+  add_foreign_key "movie_cast_mappings", "movies"
 end
