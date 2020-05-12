@@ -1,0 +1,21 @@
+<h1 align ="center" style = "color: white">Cast and Crew</h1>
+
+<table align ="center" border="0" id = "myTable">
+  <thead>
+    <tr>
+      <th style = "color:white" >NAME</th>
+      <th style = "color:white" >GENDER</th>
+      <th style = "color:white" >AGE</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @show.each do |cas| %>  
+        <tr>
+        <td><%= cas.name%></td>
+        <td><%= cas.gender%></td>
+        <td><%= cas.age%></td>    
+      </tr>
+    <% end %>
+</tbody>
+</table>
